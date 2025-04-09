@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NOBITA HACKS - SOHIL SCRIPTER</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      background-size: 400% 400%;
+      animation: bgMove 15s ease infinite;
+    }
+
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      padding: 50px 20px 100px;
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      box-shadow: 0 0 15px #ffcc00;
+    }
+
+    h1 {
+      font-size: 28px;
+      background: -webkit-linear-gradient(yellow, orange);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    input[type="number"] {
+      padding: 12px;
+      font-size: 18px;
+      border-radius: 10px;
+      width: 220px;
+      border: none;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      border-radius: 10px;
+      background-color: #ff3131;
+      color: white;
+      border: none;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .register-screen, .telegram-join {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.95);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .register-screen button, .telegram-join button {
+      background-color: #2AABEE;
+      margin-top: 20px;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #111;
+      color: #fff;
+      padding: 10px 0;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .footer a {
+      color: #00ffe5;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Registration Gate -->
+  <div class="register-screen" id="registerScreen">
+    <h2>Register on BHARAT CLUB TO START OTHERWISE HACK NOT WORK</h2>
+    <p>Click below to register:</p>
+    <a href="https://bhtigerclub.com/#/register?invitationCode=638513782400" target="_blank">
+      <button onclick="goNextStep()">Register Now</button>
+    </a>
+  </div>
+
+  <!-- Join Telegram Modal -->
+  <div class="telegram-join" id="joinModal" style="display:none;">
+    <h2>Join our Telegram Channel to Access</h2>
+    <p>SOHIL SCRIPTER</p>
+    <a href="https://t.me/+6YeUHAgThp8wODNl" target="_blank">
+      <button onclick="proceed()">Join Telegram</button>
+    </a>
+  </div>
+
+  <!-- Main App -->
+  <div class="container" id="appContent" style="display:none;">
+    <img src="https://cdn.glitch.global/e03d18b6-c5b1-4bc0-b562-020bd7fdd3b4/images%20(4).jpeg?v=1744183453118" class="logo" alt="Nobita Logo" />
+    <h1>BHARAT CLUB VIP HACK BY NOBITA</h1>
+
+    <p>Enter Period Number (001 - 999):</p>
+    <input type="number" id="periodInput" min="1" max="999" />
+    <br />
+    <button onclick="predict()">Get Prediction</button>
+
+    <div class="result" id="resultBox"></div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    JOIN: <a href="https://t.me/+6YeUHAgThp8wODNl" target="_blank">SOHIL SCRIPTER</a> FOR MORE HACKS
+  </div>
+
+  <script>
+    function goNextStep() {
+      document.getElementById("registerScreen").style.display = "none";
+      document.getElementById("joinModal").style.display = "flex";
+    }
+
+    function proceed() {
+      document.getElementById("joinModal").style.display = "none";
+      document.getElementById("appContent").style.display = "block";
+    }
+
+    function predict() {
+      const period = parseInt(document.getElementById("periodInput").value);
+      if (!period || period < 1 || period > 999) {
+        alert("Enter a valid 3-digit number between 001 and 999.");
+        return;
+      }
+
+      const outcomes = ["BIG", "SMALL"];
+      const colors = ["RED", "GREEN"];
+
+      const prediction = outcomes[Math.floor(Math.random() * outcomes.length)];
+      const color = colors[Math.floor(Math.random() * colors.length)];
+
+      const resultText = `Prediction: ${prediction} ${color}`;
+      const resultColor = color === "RED" ? "#ff4d4d" : "#00ff66";
+
+      const resultBox = document.getElementById("resultBox");
+      resultBox.innerText = resultText;
+      resultBox.style.color = resultColor;
+    }
+
+    window.onload = () => {
+      document.getElementById("registerScreen").style.display = "flex";
+    };
+  </script>
+
+</body>
+</html>
