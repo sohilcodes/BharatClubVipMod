@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NOBITA HACKS - SOHIL SCRIPTER</title>
   <style>
     body {
@@ -21,47 +22,67 @@
     }
 
     .container {
-      padding: 50px 20px 100px;
+      padding: 2em 1em 6em;
+      max-width: 600px;
+      margin: auto;
     }
 
     .logo {
-      width: 120px;
-      height: 120px;
+      width: 100px;
+      height: 100px;
       object-fit: cover;
       border-radius: 50%;
-      margin-bottom: 20px;
+      margin-bottom: 1em;
       box-shadow: 0 0 15px #ffcc00;
     }
 
     h1 {
-      font-size: 28px;
+      font-size: 1.5em;
       background: -webkit-linear-gradient(yellow, orange);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
+    .glow-text {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: #00ffc8;
+      text-shadow: 0 0 10px #00ffc8, 0 0 20px #00ffc8, 0 0 30px #00ffc8;
+      animation: glow 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #00ffc8;
+      }
+      to {
+        text-shadow: 0 0 20px #00ffc8;
+      }
+    }
+
     input[type="number"] {
-      padding: 12px;
-      font-size: 18px;
-      border-radius: 10px;
-      width: 220px;
+      padding: 0.6em;
+      font-size: 1em;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 200px;
       border: none;
     }
 
     button {
-      padding: 12px 25px;
-      font-size: 18px;
-      border-radius: 10px;
+      padding: 0.6em 1.5em;
+      font-size: 1em;
+      border-radius: 8px;
       background-color: #ff3131;
       color: white;
       border: none;
-      margin-top: 15px;
+      margin-top: 1em;
       cursor: pointer;
     }
 
     .result {
-      margin-top: 30px;
-      font-size: 28px;
+      margin-top: 1.5em;
+      font-size: 1.5em;
       font-weight: bold;
     }
 
@@ -75,13 +96,13 @@
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      padding: 20px;
+      padding: 2em 1em;
       text-align: center;
     }
 
     .register-screen button, .telegram-join button {
       background-color: #2AABEE;
-      margin-top: 20px;
+      margin-top: 1em;
     }
 
     .footer {
@@ -90,9 +111,10 @@
       width: 100%;
       background: #111;
       color: #fff;
-      padding: 10px 0;
+      padding: 0.6em 0;
       text-align: center;
       font-weight: bold;
+      font-size: 0.9em;
     }
 
     .footer a {
@@ -123,15 +145,19 @@
 
   <!-- Main App -->
   <div class="container" id="appContent" style="display:none;">
+    <h2 class="glow-text">WINGO 1 MIN</h2>
     <img src="https://cdn.glitch.global/e03d18b6-c5b1-4bc0-b562-020bd7fdd3b4/images%20(4).jpeg?v=1744183453118" class="logo" alt="Nobita Logo" />
     <h1>BHARAT CLUB VIP HACK BY NOBITA</h1>
 
-    <p>Enter Period Number (001 - 999):</p>
+    <p>Enter Period Number (001 to 999):</p>
     <input type="number" id="periodInput" min="1" max="999" />
     <br />
     <button onclick="predict()">Get Prediction</button>
 
     <div class="result" id="resultBox"></div>
+    <p style="margin-top: 10px; font-size: 1em; color: yellow; font-weight: bold;">
+      Maintain 4 level funds or register with our official link, otherwise <span style="color: red;">Loss karo</span>
+    </p>
   </div>
 
   <!-- Footer -->
@@ -151,24 +177,24 @@
     }
 
     function predict() {
-      const period = parseInt(document.getElementById("periodInput").value);
+      const input = document.getElementById("periodInput");
+      let period = parseInt(input.value);
+
       if (!period || period < 1 || period > 999) {
         alert("Enter a valid 3-digit number between 001 and 999.");
         return;
       }
 
+      const formatted = period.toString().padStart(3, '0');
       const outcomes = ["BIG", "SMALL"];
       const colors = ["RED", "GREEN"];
 
       const prediction = outcomes[Math.floor(Math.random() * outcomes.length)];
       const color = colors[Math.floor(Math.random() * colors.length)];
+      const colorStyle = color === "RED" ? "#ff3131" : "#00ff00";
 
-      const resultText = `Prediction: ${prediction} ${color}`;
-      const resultColor = color === "RED" ? "#ff4d4d" : "#00ff66";
-
-      const resultBox = document.getElementById("resultBox");
-      resultBox.innerText = resultText;
-      resultBox.style.color = resultColor;
+      document.getElementById("resultBox").innerHTML =
+        `Prediction for ${formatted}: <span style="color: ${colorStyle};">${prediction} ${color}</span>`;
     }
 
     window.onload = () => {
@@ -177,4 +203,4 @@
   </script>
 
 </body>
-</html>
+  </html>
